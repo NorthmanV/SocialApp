@@ -55,7 +55,8 @@ class SignInVC: UIViewController, UITextFieldDelegate {
             } else {
                 print("Successfully authorized with Firebase")
                 if let user = user {
-                    self.completeSignIn(userID: user.uid)
+                    let userData = ["provider": credential.provider]
+                    self.completeSignIn(userID: user.uid, userData: userData)
                 }
             }
         }
@@ -67,7 +68,8 @@ class SignInVC: UIViewController, UITextFieldDelegate {
                 if error == nil {
                     print("Email user authenticated with Firebase")
                     if let user = user {
-                        self.completeSignIn(userID: user.uid)
+                        let userData = ["provider": user.providerID]
+                        self.completeSignIn(userID: user.uid, userData: userData)
                     }
                 } else {
                     Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
@@ -76,7 +78,8 @@ class SignInVC: UIViewController, UITextFieldDelegate {
                         } else {
                             print("Succesfully created new user with Firebase")
                             if let user = user {
-                                self.completeSignIn(userID: user.uid)
+                                let userData = ["provider": user.providerID]
+                                self.completeSignIn(userID: user.uid, userData: userData)
                             }
                         }
                     })
@@ -94,7 +97,8 @@ class SignInVC: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func completeSignIn(userID: String) {
+    func completeSignIn(userID: String, userData: Dictionary<String, String>) {
+        DataService.ds.createFirebaseDBUser(uid: userID, userData: userData)
         KeychainWrapper.standard.set(userID, forKey: KEY_UID)
         performSegue(withIdentifier: "goToFeed", sender: nil)
     }

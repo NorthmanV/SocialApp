@@ -208,12 +208,16 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Tsw-K3-91j">
                                                         <rect key="frame" x="8" y="8" width="339" height="49"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="N8R-i4-2ua" customClass="CircleView" customModule="SocialApp" customModuleProvider="target">
+                                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="N8R-i4-2ua" customClass="CircleView" customModule="SocialApp" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="49"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.67450980390000004" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <gestureRecognizers/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="49" id="UEL-ty-dTb"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="GeQ-S1-0uY" appends="YES" id="Lcn-fo-yG7"/>
+                                                                </connections>
                                                             </imageView>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHB-Kq-x2z" customClass="FancyTextField" customModule="SocialApp" customModuleProvider="target">
                                                                 <rect key="frame" x="59" y="0.0" width="221" height="49"/>
@@ -233,6 +237,9 @@
                                                                         <real key="value" value="7"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="postButtonTapped:" destination="TOa-QY-Kb1" eventType="touchUpInside" id="Yt2-fx-lMd"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -310,7 +317,7 @@
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="88" id="F9m-bM-kMr"/>
                                                                             </constraints>
-                                                                            <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -380,6 +387,8 @@
                         <viewLayoutGuide key="safeArea" id="ysH-i5-bOc"/>
                     </view>
                     <connections>
+                        <outlet property="captionField" destination="aHB-Kq-x2z" id="nKd-pM-6Ni"/>
+                        <outlet property="imageAdd" destination="N8R-i4-2ua" id="a0p-lF-nMS"/>
                         <outlet property="tableView" destination="9Rq-yX-6vu" id="Xho-R1-n3G"/>
                     </connections>
                 </viewController>
@@ -387,6 +396,11 @@
                 <tapGestureRecognizer id="uIx-Vq-90A">
                     <connections>
                         <action selector="signOutTapped:" destination="TOa-QY-Kb1" id="Ywd-Gb-tYs"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="GeQ-S1-0uY">
+                    <connections>
+                        <action selector="adImageTapped:" destination="TOa-QY-Kb1" id="GMT-g7-IvS"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

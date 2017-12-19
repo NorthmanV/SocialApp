@@ -366,7 +366,8 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="caption" destination="t2n-cp-XNg" id="iEX-uw-Z0x"/>
-                                                    <outlet property="lakeLabel" destination="1BP-Mo-L0a" id="mMs-N9-a8a"/>
+                                                    <outlet property="likeImage" destination="jah-Sl-jLN" id="Hdo-Ug-knh"/>
+                                                    <outlet property="likeLabel" destination="1BP-Mo-L0a" id="mMs-N9-a8a"/>
                                                     <outlet property="postImage" destination="csH-vi-DGx" id="VAv-5b-yxr"/>
                                                     <outlet property="profileImage" destination="xtO-Sp-xsz" id="pBe-Gp-qUZ"/>
                                                     <outlet property="userNameLabel" destination="Qxu-mW-peL" id="yub-oT-3wZ"/>

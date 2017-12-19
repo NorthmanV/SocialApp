@@ -74,6 +74,7 @@
 		872845901FDD3FAD003E4E17 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				872845911FDD3FDF003E4E17 /* DataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -118,7 +119,6 @@
 		8732D2591FD2D8250030EDDF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				872845911FDD3FDF003E4E17 /* DataService.swift */,
 				872845931FDD7F5F003E4E17 /* Post.swift */,
 			);
 			path = Model;

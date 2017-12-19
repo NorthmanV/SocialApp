@@ -81,7 +81,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
     @IBAction func postButtonTapped(_ sender: UIButton) {
-        guard let caption = captionField.text, captionField.text != "" else {
+        guard let _ = captionField.text, captionField.text != "" else {
             print("Caption must be entered")
             return
         }
@@ -99,9 +99,26 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                 } else {
                     print("Successfully uploaded image to Firebase Storage")
                     let downloadUrl = metadata?.downloadURL()?.absoluteString
+                    if let url = downloadUrl {
+                        self.postToFirebase(imageUrl: url)
+                    }
                 }
             })
         }
+    }
+    
+    func postToFirebase(imageUrl: String) {
+        let post: [String : Any] = [
+            "caption": captionField.text!,
+            "imageURL": imageUrl,
+            "likes": 0
+            ]
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
+        firebasePost.setValue(post)
+        captionField.text = ""
+        imageSelected = false
+        imageAdd.image = UIImage(named: "add-image")
+        tableView.reloadData()
     }
     
     @IBAction func signOutTapped(_ sender: UITapGestureRecognizer) {
